@@ -8,7 +8,9 @@ console.log('Sample JavaScript #3 HW #17');
  * если число передано в функцию – счет начинается с указанного числа
  * если нет – то счет продолжается
  */
-
+counter = function(){
+ var number =
+}
 // console.log(counter()); // 0
 
 // console.log(counter()); // 1
