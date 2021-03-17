@@ -7,25 +7,29 @@ console.log('Sample JavaScript #3 HW #17');
  * функция может принимать число в качестве аргумента counter(n)
  * если число передано в функцию – счет начинается с указанного числа
  * если нет – то счет продолжается
- */
-counter = function(){
- var number =
-}
-// console.log(counter()); // 0
+ */ 
+function counter(){
+  var count = 0 ;
+  return function (num){
+    count = num !== undefined ? num : count ;
+    return count++;
+  }
+};
+console.log(counter()); // 0
 
-// console.log(counter()); // 1
+console.log(counter()); // 1
 
-// console.log(counter(100)); // 100
+console.log(counter(100)); // 100
 
-// console.log(counter()); // 101
+console.log(counter()); // 101
 
-// console.log(counter(500)); // 500
+console.log(counter(500)); // 500
 
-// console.log(counter()); // 501
+console.log(counter()); // 501
 
-// console.log(counter(0)); // 0
+console.log(counter(0)); // 0
 
-// console.log(counter()); // 1
+console.log(counter()); // 1
 
 /*
  * #2
