@@ -8,13 +8,15 @@ console.log('Sample JavaScript #3 HW #17');
  * если число передано в функцию – счет начинается с указанного числа
  * если нет – то счет продолжается
  */ 
-function counter(){
-  var count = 0 ;
-  return function (num){
-    count = num !== undefined ? num : count ;
+var counter = (function () {
+  var count = 0;
+
+  return function (num) {
+    count = num === undefined ? count : num;
+
     return count++;
-  }
-};
+  };
+}());
 console.log(counter()); // 0
 
 console.log(counter()); // 1
@@ -41,34 +43,51 @@ console.log(counter()); // 1
  * counting.increment() – увеличивает значение счетчика на 1
  * counting.decrement() – уменьшает значение счетчика на 1
  */
+ 
+let counting = (function () {
+  let count = 0;
 
-// console.log(counting.value()); // 0
+  return {
+    value(num) {
+      if (num !== undefined) count = num;
 
-// counting.increment();
+      return count;
+    },
+    decrement() {
+      count--;
+    },
+    increment() {
+      count++;
+    }
+  };
+}());
+console.log(counting.value()); // 0
 
-// counting.increment();
+counting.increment();
 
-// counting.increment();
+counting.increment();
 
-// console.log(counting.value()); // 3
+counting.increment();
 
-// counting.decrement();
+console.log(counting.value()); // 3
 
-// counting.decrement();
+counting.decrement();
 
-// console.log(counting.value()); // 1
+counting.decrement();
 
-// console.log(counting.value(100)); // 100
+console.log(counting.value()); // 1
 
-// counting.decrement();
+console.log(counting.value(100)); // 100
 
-// console.log(counting.value()); // 99
+counting.decrement();
 
-// console.log(counting.value(200)); // 200
+console.log(counting.value()); // 99
 
-// counting.increment();
+console.log(counting.value(200)); // 200
 
-// console.log(counting.value()); // 201
+counting.increment();
+
+console.log(counting.value()); // 201
 
 /*
  * #3
@@ -77,10 +96,16 @@ console.log(counter()); // 1
  * функция myPrint(a, b, res) – глобальная функция, которая должна генерировать из параметров a, b, res строку вида 'a^b=res' и возвращать ее
  * myPrint() должна быть передана в myPow() как параметр и вызвана внутри как callback-функция
  * функция myPow() в качестве возвращаемого значения принимает результат myPrint()
+ * 
  * Например:
+ * 
+ * 
  * console.log(myPow(3, 4, myPrint)); // 3^4=81
  * console.log(myPow(2, 3, myPrint)); // 2^3=8
  */
+function myPow (){
+  
+}
 
 //  console.log(myPow(3, 4, myPrint)); // 3^4=81
 
