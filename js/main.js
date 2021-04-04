@@ -100,17 +100,32 @@ console.log(counting.value()); // 201
  * Например:
  * 
  * 
- * console.log(myPow(3, 4, myPrint)); // 3^4=81
- * console.log(myPow(2, 3, myPrint)); // 2^3=8
- */
-function myPow (){
-  
+ * 
+ *
+ */let myPrint = (a, b, res) => `${a}^${b}=${res}`;
+let myPow = (a, b, callback) => {
+  let pow = (x, n) => {
+    if (n !== 1) return x *= pow(x, n - 1);
+
+    return x;
+  };
+
+  return callback(a, b, pow(a, b));
+};
+console.log(myPow(3, 4, myPrint)); // 3^4=81
+console.log(myPow(2, 3, myPrint)); // 2^3=8
+
+function carInfo { 
+  return 
+var car =  {
+  engine: 6300, 
+  model: 'e630',
+  name: 'Mercedes-Benz',
+  year: 2019,
+  used: 'new' , 
+  info: carInfo
+ }
 }
-
-//  console.log(myPow(3, 4, myPrint)); // 3^4=81
-
-// console.log(myPow(2, 3, myPrint)); // 2^3=8
-
 /*
  * #4
  *
@@ -121,7 +136,7 @@ function myPow (){
  * car.name – бренд авто, строка
  * car.year – год выпуска, число
  * car.used – строка для описания состояния авто, допускаются значения 'used' и 'new'
- *
+
  * #5
  *
  * Для созданных ранее объектов определите метод info(), используя ключевое слово this.
