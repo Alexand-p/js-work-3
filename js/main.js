@@ -102,7 +102,9 @@ console.log(counting.value()); // 201
  * 
  * 
  *
- */let myPrint = (a, b, res) => `${a}^${b}=${res}`;
+ */
+
+let myPrint = (a, b, res) => `${a}^${b}=${res}`;
 let myPow = (a, b, callback) => {
   let pow = (x, n) => {
     if (n !== 1) return x *= pow(x, n - 1);
@@ -115,17 +117,23 @@ let myPow = (a, b, callback) => {
 console.log(myPow(3, 4, myPrint)); // 3^4=81
 console.log(myPow(2, 3, myPrint)); // 2^3=8
 
-function carInfo { 
-  return 
+function carInfo (){ 
+  return `${this.name} ${this.model}, ${this.engine}cc, year ${this.year}, ${this.used}`;
+}
 var car =  {
   engine: 6300, 
   model: 'e630',
   name: 'Mercedes-Benz',
-  year: 2019,
-  used: 'new' , 
-  info: carInfo
- }
-}
+  year: 2019, 
+  info: carInfo,
+  get used(){
+    return this.year !== yearNow ? 'used' : 'new';
+  },
+   set used(value) {
+     if (value === 'new' && this.year < yearNow) this.year = yearNow;
+   }
+ };
+
 /*
  * #4
  *
@@ -156,21 +164,21 @@ var car =  {
  * - если сеттеру used присвоено значение 'used', ничего делать не нужно
  */
 
-// let yearNow = new Date().getFullYear(); // получить текущий год как число
+let yearNow = new Date().getFullYear(); // получить текущий год как число
 
-// console.log(car.info()); // Chevrolet Lacetti, 2000cc, year 2010, used
+console.log(car.info()); // Chevrolet Lacetti, 2000cc, year 2010, used
 
-// car.used = 'new';
+car.used = 'new';
 
-// console.log(car.info()); // Chevrolet Lacetti, 2000cc, year 2019, new -- год изменен
+console.log(car.info()); // Chevrolet Lacetti, 2000cc, year 2019, new -- год изменен
 
-// car.used = 'used';
+car.used = 'used';
 
-// console.log(car.info()); // Chevrolet Lacetti, 2000cc, year 2019, new -- изменения не выполняются
+console.log(car.info()); // Chevrolet Lacetti, 2000cc, year 2019, new -- изменения не выполняются
 
 // console.log(car2.info()); // Infinite FX50 AWD, 5000cc, year 2019, new
 
-// car.used = 'used';
+car.used = 'used';
 
 // console.log(car2.info()); // Infinite FX50 AWD, 5000cc, year 2019, new -- изменения не выполняются
 
@@ -181,35 +189,43 @@ var car =  {
  * В реализации функции должен быть применен метод Math.max() и apply().
  */
 
-// let list = [12, 23, 100, 34, 56, 9, 233];
-
-// console.log(myMax(list)); // 233
+let list = [12, 23, 100, 34, 56, 9, 233];
+let myMax = (arg) => Math.max.apply(Math, arg);
+console.log(myMax(list)); // 233
 
 /*
  * #8
  *
  * Создайте функцию myMul(a, b), которая будет умножать числа а и b, возвращая результат.
+ *
  */
-
+   function myMul(a, b){
+     var x = a * b;
+     return x;
+   }
 /*
  * создайте функции myDouble(n), которая принимает один параметр и  удваивает его.
  * Использовать умножение или другие математические операции внутри функции – запрещено, только bind() и myMul().
  * Функция возвращает результат вычисления.
  */
+ function myDouble(){
+  var y = Math.pow('', 2) ;
+  return y;
+ }
+console.log(myDouble(3)); // = myMul(2, 3) = 6
 
-// console.log(myDouble(3)); // = myMul(2, 3) = 6
+console.log(myDouble(4)); // = myMul(2, 4) = 8
 
-// console.log(myDouble(4)); // = myMul(2, 4) = 8
-
-// console.log(myDouble(5)); // = myMul(2, 5) = 10
+console.log(myDouble(5)); // = myMul(2, 5) = 10
 
 // аналогичным образом создайте функцию myTriple(n), которая утраивает принимающий параметр, возвращая результат.
-
-// console.log(myTriple(3)); // = myMul(3, 3) = 9
-
-// console.log(myTriple(4)); // = myMul(3, 4) = 12
-
-// console.log(myTriple(5)); // = myMul(3, 5) = 15
+function myTriple(){
+  var i = Math.pow('', 3 );
+  return i;
+}
+console.log(myTriple(3)); // = myMul(3, 3) = 9
+console.log(myTriple(4)); // = myMul(3, 4) = 12
+console.log(myTriple(5)); // = myMul(3, 5) = 15
 
 /*
  * #9
