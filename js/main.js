@@ -208,10 +208,7 @@ console.log(myMax(list)); // 233
  * Использовать умножение или другие математические операции внутри функции – запрещено, только bind() и myMul().
  * Функция возвращает результат вычисления.
  */
- function myDouble(){
-  var y = Math.pow('', 2) ;
-  return y;
- }
+let myDouble = myMul.bind(null, 2);
 console.log(myDouble(3)); // = myMul(2, 3) = 6
 
 console.log(myDouble(4)); // = myMul(2, 4) = 8
@@ -219,10 +216,7 @@ console.log(myDouble(4)); // = myMul(2, 4) = 8
 console.log(myDouble(5)); // = myMul(2, 5) = 10
 
 // аналогичным образом создайте функцию myTriple(n), которая утраивает принимающий параметр, возвращая результат.
-function myTriple(){
-  var i = Math.pow('', 3 );
-  return i;
-}
+let myTriple = myMul.bind(null, 3);
 console.log(myTriple(3)); // = myMul(3, 3) = 9
 console.log(myTriple(4)); // = myMul(3, 4) = 12
 console.log(myTriple(5)); // = myMul(3, 5) = 15
@@ -236,11 +230,20 @@ console.log(myTriple(5)); // = myMul(3, 5) = 15
  * В реализации разрешено использование set.
  * Любые условные операторы – запрещены и объекты.
  */
+let notUniqNums = [1, 1, 2, 3, 4, 5, 6, 7];
+let notUniqStrings = ['Bob', 'Kate', 'Jhon', 'Tom', 'Jhon', 'Kate', 'Tom', 'Bob', 'Jhon', 'Tom'];
+function myUniq(arr){
+  let set = new Set();
 
-// let notUniqNums = [1, 1, 2, 3, 4, 5, 6, 7];
+  arr.forEach((val) => {
+    set.add(val);
+  });
 
-// let notUniqStrings = ['Bob', 'Kate', 'Jhon', 'Tom', 'Jhon', 'Kate', 'Tom', 'Bob', 'Jhon', 'Tom'];
+  return set;
+};
 
-// console.log(myUniq(notUniqNums));
 
-// console.log(myUniq(notUniqStrings));
+
+
+console.log(myUniq(notUniqNums));
+console.log(myUniq(notUniqStrings));
